@@ -1,0 +1,39 @@
+﻿@model TaskModel
+
+@{
+    ViewData["Title"] = "Add Task";
+}
+<h4 class="card-header"> Add Task</h4>
+<hr />
+<div class="card-body">
+    <form asp-action="Task" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="taskName" class="control-label"></label>
+            <input asp-for="taskName" class="form-control card" />
+            <span asp-validation-for="taskName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaskDate" class="control-label"></label>
+            <input asp-for="TaskDate" class="form-control" />
+            <span asp-validation-for="TaskDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Mark" class="control-label"></label>
+            <input asp-for="Mark" class="form-control card" />
+            <span asp-validation-for="Mark" class="text-danger"></span>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="Percent_Contribution" class="control-label"></label>
+            <input asp-for="Percent_Contribution" class="form-control card" />
+            <span asp-validation-for="Percent_Contribution" class="text-danger"></span>
+        </div>*@
+
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-info" />
+        </div>
+    </form>
+</div>
+

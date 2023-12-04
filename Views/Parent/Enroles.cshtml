@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EnrolesViewModel>
+@{
+
+    ViewData["Title"] = " Programe Enroled";
+}
+
+<div class="card">
+    <p2>Programe Enroled</p2>
+</div>
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.enroleModel.EnroleYear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProgrameOfferdModel.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProgrameOfferdModel.EndDate)
+                </th>
+                <th>
+                   Programe Name
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.enroleModel.EnroleYear)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgrameOfferdModel.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgrameOfferdModel.EndDate)
+                </td>
+
+                @foreach (var Data in ViewBag.CentrePro)
+                {
+
+                    if (item.ProgrameOfferdModel.CentreProgramId == Data.CentreProgramId)
+                    {
+                        <td>
+                            @Data.ProgramDescr                          
+                        </td>
+                        break;
+                    }
+                }
+
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> <p5>Nothing  Yet</p5></div>
+
+}

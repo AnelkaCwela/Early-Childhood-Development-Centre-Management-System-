@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PupilModel>
+    @{
+
+        ViewData["Title"] = "Enrole";
+    }
+
+<div class="card">
+    <h5 class="text-center">
+        Pupuil
+    </h5>
+</div>
+<br />
+
+    @if (Model.Any())
+    {
+        <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+            <thead>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdentityNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Lname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fname)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                  //  var Id = @item.PupilId;                 
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdentityNo)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fname)
+                    </td>
+                    @if (User.IsInRole("Teacher"))
+                    {
+                        <td>
+                            <a class="badge badge-info" asp-action="AddMark" asp-route-i="@item.CentreId" asp-route-Id="@item.PupilId">Add Mark</a>
+                        </td>
+                    }
+                    <td>
+
+                        <a class="badge badge-primary" asp-action="Mark" asp-route-i="@item.CentreId" asp-route-Id="@item.PupilId">View Marks</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="card-footer"> <h6>Nothing pupil Yet Enroled to this programe</h6></div>
+
+    }

@@ -1,0 +1,24 @@
+﻿@model ProvinceModel
+
+@{
+    ViewData["Title"] = "Province";
+}
+<div class="card text-center">
+    Province
+    @ViewBag.A
+</div>
+<hr />
+<div class="card-body">
+    <form asp-action="CreateProvince" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="ProvinceName" class="control-label"></label>
+            <input asp-for="ProvinceName" class="form-control card" />
+            <span asp-validation-for="ProvinceName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

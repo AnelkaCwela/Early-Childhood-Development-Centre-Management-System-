@@ -1,0 +1,68 @@
+﻿@inject SignInManager<UserModel> _signInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Algorithm-ECDc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Images/unnamed.jpg" />
+</head>
+<body>
+    <div class="backparent">
+        <header class="mainheader">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">
+                    EarlyEd</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Centres</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Programs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Help</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link text-primary" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-primary" asp-area="" asp-controller="Account" asp-action="Register">Apply</a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <div class="container bg-transparent">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+    <div class="backimage"></div>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container text-light">
+            &copy; 2021 - EarlyEd - <a class="text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

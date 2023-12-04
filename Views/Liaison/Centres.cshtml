@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CentreModel>
+@{
+
+    ViewData["Title"] = "Centre";
+}
+<div class="card">
+    Centres
+</div>
+
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CentreName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CentraEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CentreFaxNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CentreNo)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CentreName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CentraEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CentreFaxNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CentreFaxNo)
+                    </td>
+                    <td>
+                        <a asp-controller="Coordinator" asp-action="List" asp-route-id="@item.CentreId">Centre Manger</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Coordinator" asp-action="ListTeacher" asp-route-ip="@item.CentreId">Teachers</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> No Centres  Yet</div>
+
+}

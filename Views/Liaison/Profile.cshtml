@@ -1,0 +1,43 @@
+﻿@model ProfileModel
+@{
+    ViewData["Title"] = "Centre Manger";
+}
+<div class="card text-center">
+    <h1> Centre Manger</h1>
+</div>
+
+<br />
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="text-center font-weight-bold">
+            Centre Manger
+        </div>
+        <h5>
+            First Name :@Model.Name
+        </h5>
+
+        <h5>
+            Last Name :@Model.Surname
+        </h5>
+
+    </div>
+    <div class="card-img">
+        <span class="img-responsive">
+            <img class="img-rounded img-responsive" role="img" src="data:image/jpg;base64,@System.Convert.ToBase64String(@Model.Profile)" width="150" height="150" asp-append-version="true" />
+        </span>
+
+    </div>
+    <div class="card">
+        <div class="text-center font-weight-bold">
+            Centre
+        </div>
+        <p5>   Centre Name    : @Model.CentreName</p5>
+        <p5>  Centre Number : @Model.CentreNo</p5>
+        <p5>  Centre Email : @Model.CentraEmail</p5>
+        <p5>  Centre FaxNo : @Model.CentreFaxNo</p5>
+    </div>
+
+    <div class="card-footer">
+        <a asp-action="Address" asp-controller="Liaison" asp-route-Id="@Model.SuburbId" class="btn btn-sm btn-info">Address</a>
+    </div>
+</div>

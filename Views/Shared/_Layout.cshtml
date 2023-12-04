@@ -1,0 +1,123 @@
+﻿@inject SignInManager<UserModel> _signInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Algorithm-ECDc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+    <link href="~/SlideBar.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Images/unnamed.jpg" />
+</head>
+<body>
+    <div class="backparent">
+        <header class="mainheader">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">
+
+                        <img src="~/Images/unnamed.jpg" height="35" width="35" class="img-fluid" />
+                        Algorithm-ECDc
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    @if (_signInManager.IsSignedIn(User))
+                    {
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav ml-auto">
+
+                                <li class="nav-item">
+                                    <form method="post" asp-action="Logout" asp-controller="Account">
+                                        <button type="submit" class="nav-link btn-link btn btn-light py-0" style="width:auto">
+                                            Logout  @User.Identity.Name
+
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </nav>
+        </header>
+        @if (User.IsInRole("Parent") && (_signInManager.IsSignedIn(User)))
+        {
+    <div class="sidebar">
+        <a class="active" href="#home">Home</a>
+        <a asp-controller="Parent" asp-action="Apply">Apply</a>
+        <a asp-controller="Parent" asp-action="Statuse">Statuse</a>
+        <a asp-controller="Parent" asp-action="Pupuil">Details</a>
+        <a asp-controller="Parent" asp-action="Index">Progress Report</a>
+        <a asp-controller="Parent" asp-action="Student">Enrole for Program</a>
+        <a href="#about">Time Table</a>
+    </div>
+
+        }
+        else if (User.IsInRole("Teacher") && (_signInManager.IsSignedIn(User)))
+        {
+            <div class="sidebar">
+                <a class="active" href="#home">Home</a>
+                <a asp-controller="Teacher" asp-action="Program">Pupil</a>
+                <a asp-controller="Teacher" asp-action="TaskLis"> Task List</a>
+                <a href="#about">Time Table</a>
+            </div>
+        }
+        else if (User.IsInRole("CentreManager") && (_signInManager.IsSignedIn(User)))
+        {
+    <div class="sidebar">
+        <a class="active" href="#home">Home</a>
+        <a asp-controller="Centre" asp-action="ListTeacher">Teachers</a>
+        <a asp-controller="Centre" asp-action="RegTeach">Register Teacher</a>
+        <a asp-controller="Centre" asp-action="Program">Add Program</a>
+        <a asp-controller="Centre" asp-action="ApplicationList">Manage Application</a>
+        <a asp-controller="Teacher" asp-action="Task">Add Task</a>
+        <a asp-controller="Teacher" asp-action="TaskList">TaskList</a>
+        <a href="#about">Time Table</a>
+    </div>
+        }
+        else if (User.IsInRole("Coordinator") && (_signInManager.IsSignedIn(User)))
+        {
+    <div class="sidebar">
+        <a class="active" href="#home">Home</a>
+        <a asp-controller="Coordinator" asp-action="Centres">Centres</a>
+        <a asp-controller="Coordinator" asp-action="Centremanager">New Centre Manager</a>
+        <a asp-controller="Coordinator" asp-action="Address">New Centre</a>
+        <a asp-controller="Coordinator" asp-action="Index">Centre manager</a>
+    </div>
+        }
+        else if (User.IsInRole("Liaison") && (_signInManager.IsSignedIn(User)))
+        {
+    <div class="sidebar">
+        <a class="active" href="#home">Home</a>
+        <a asp-controller="Coordinator" asp-action="Centres">Centres</a>
+        <a asp-controller="Liaison" asp-action="Index">Coordinator</a>
+        <a asp-controller="Coordinator" asp-action="Staff">Centre manager</a>
+        <a asp-controller="Liaison" asp-action="RegCoordinator">Regional Coodinator</a>
+        <a asp-controller="Coordinator" asp-action="Region">Add Regions</a>
+        <a asp-controller="Liaison" asp-action="Regions">View Regions</a>
+        <a asp-controller="Liaison" asp-action="#">Reports</a>
+
+    </div>
+        }
+        <main role="main">
+            <div class="container bg-transparent content">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+    <div class="backimage"></div>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container text-light">
+            &copy; 2021 - EarlyEd - <a class="text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProgrameOfferdModel>
+@{
+
+    ViewData["Title"] = "Teachers";
+}
+<br />
+<div class="card mb-3">
+    <div class="card-header text-center">
+        Teacher Details
+    </div>
+    <div class="card-body">
+        <div class="text-center">
+            Teacher Details
+        </div>
+        <h5>
+            Teacher Name     :@ViewBag.Name
+        </h5>
+        <h5>
+            Teacher Surname  :@ViewBag.Surname
+        </h5>
+        <h5>
+            Teacher Cell     :@ViewBag.Cell
+        </h5>
+    </div>
+</div>
+
+
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                   Program
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    <select asp-for="@item.CentreProgramId" disabled class="form-control" asp-items="ViewBag.CentreProgramId"></select>
+                </td>
+                @if (User.IsInRole("CentreManager"))
+                {
+                    <td>
+                        <a asp-controller="Centre" class="btn btn-sm btn-primary" asp-action="ProgramName" asp-route-Id="@item.CentreProgramId">Assgnt Teacher</a>
+                    </td>
+                }
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}

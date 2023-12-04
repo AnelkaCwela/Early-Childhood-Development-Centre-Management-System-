@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PupilStatuseView>
+@{
+
+    ViewData["Title"] = "Application List";
+}
+
+<div class="card text-center">
+    Application Statuse
+</div>
+<p>
+    <a class="badge badge-primary" asp-controller="Parent" asp-action="Apply">New Pupuil</a>
+</p>
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.ApplicationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.IdentityNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ganderModel.Gander)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.centreModel.CentreName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StatusModel.Statuse)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                var Id = @item.pupilModel.PupilId;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pupilModel.ApplicationDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.pupilModel.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pupilModel.IdentityNo)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.pupilModel.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pupilModel.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ganderModel.Gander)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.centreModel.CentreName)
+                <td class="badge badge-primary">
+                    @Html.DisplayFor(modelItem => item.StatusModel.Statuse)
+                </td>
+                @if (item.StatusModel.StatusId != 4)
+                {
+                    <td>
+                        <a asp-action="Cancel" asp-route-Id="@Id">Cancel Application</a>
+                    </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+<div class="card-footer"> No Application Yet</div>
+
+}

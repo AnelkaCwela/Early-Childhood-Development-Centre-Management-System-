@@ -1,0 +1,115 @@
+﻿<h1>Application List </h1>
+<p>
+    <a asp-controller="Booking" asp-action="Reserve">Create New Application</a>
+</p>
+<div>
+    <input type="search" class="input-group-text" placeholder="Seach" />
+</div>
+<table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+    <thead>
+        <tr>
+
+            <th>
+                Parent Name
+            </th>
+            <th>
+                Parent Surname
+            </th>
+            <th>
+                Cell No
+            </th>
+            <th>
+                No Pupul
+            </th>
+            <th>
+                Application Statuse
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            <td>
+                Nomphelo
+            </td>
+            <td>
+                Siwela
+            </td>
+            <td>
+                0733986968
+            </td>
+            <td>
+                3
+            </td>
+
+            <td>
+                Subbmited
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info" asp-action="UpdateBooking">Reject</a>
+                <a class="btn btn-sm btn-danger" asp-action="RemoveBooking">Accept </a>
+            </td>
+            <td>
+
+                <a asp-action="RemoveBooking">View More </a>
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                Oyama
+            </td>
+            <td>
+                Siwela
+            </td>
+            <td>
+                0733986968
+            </td>
+            <td>
+                3
+            </td>
+
+            <td>
+                Accepted
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info" asp-action="UpdateBooking">Reject</a>
+                <a class="btn btn-sm btn-danger" asp-action="RemoveBooking">Accept </a>
+            </td>
+            <td>
+
+                <a asp-action="RemoveBooking">View More </a>
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                Nomphelo
+            </td>
+            <td>
+                Siwela
+            </td>
+            <td>
+                0733986968
+            </td>
+            <td>
+                3
+            </td>
+
+            <td>
+                Accepted
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info" asp-action="UpdateBooking">Reject</a>
+                <a class="btn btn-sm btn-danger" asp-action="RemoveBooking">Accept </a>
+            </td>
+            <td>
+
+                <a asp-action="RemoveBooking">View More </a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

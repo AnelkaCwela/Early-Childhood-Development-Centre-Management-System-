@@ -1,0 +1,24 @@
+﻿@model QualificationModel
+
+@{
+    ViewData["Title"] = "Qualification";
+}
+<div class="card text-center">
+    Qualification
+    @ViewBag.A
+</div>
+<hr />
+<div class="card-body">
+    <form asp-action="Createqualification" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="QualificationName" class="control-label"></label>
+            <input asp-for="QualificationName" class="form-control card" />
+            <span asp-validation-for="QualificationName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

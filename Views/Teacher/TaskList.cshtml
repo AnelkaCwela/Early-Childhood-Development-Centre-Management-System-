@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TaskModel>
+@{
+
+    ViewData["Title"] = "Task";
+}
+<div class="card">
+    Tasks
+</div>
+
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.taskName)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Percent_Contribution)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Mark)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskDate)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.taskName)
+                    </td>
+
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Percent_Contribution)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mark)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> No Task  Yet</div>
+
+}
+

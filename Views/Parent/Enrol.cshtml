@@ -1,0 +1,40 @@
+﻿@model EnroleMode
+
+@{
+    ViewData["Title"] = "Enrole Admission";
+}
+<div class="card mb-3">
+    <div class="card-header text-center">
+          Centre    :@ViewBag.Centre
+    </div>
+    <div class="card-body">
+        <h5>
+            Name        : <input asp-for="Lname"  disabled />
+        </h5>
+        <h5>
+            Surname     : <input asp-for="Fname" disabled/>
+        </h5>
+        <h5>
+            Identity No : <input asp-for="IdentityNo" disabled />
+        </h5>
+    </div>
+    <div class="card-footer">
+    </div>
+</div>
+<div class="card-body">
+    <form asp-action="Enrol" method="post">
+        <input asp-for="PupilId" type="hidden" />
+        <input asp-for="Fname" type="hidden" />
+        <input asp-for="Lname" type="hidden" />
+        <input asp-for="CentreId" type="hidden" />
+        <input asp-for="IdentityNo" type="hidden" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CentreProgramId" class="control-label"></label>
+            <select asp-for="CentreProgramId" class="form-control" asp-items="ViewBag.CentreProgramId"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Enrole" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,65 @@
+﻿
+@model RegTeacherModel
+
+@{
+    ViewData["Title"] = "Register Teacher";
+}
+
+
+
+<h4 class="card-header">Register Teacher</h4>
+<hr />
+<div class="card-body">
+    <form asp-action="Register" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Fname" class="control-label"></label>
+            <input asp-for="Fname" placeholder="Enter Name" class="form-control card" />
+            <span asp-validation-for="Fname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Lname" class="control-label"></label>
+            <input asp-for="Lname" placeholder="Enter Surname" class="form-control card" />
+            <span asp-validation-for="Lname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CellNo" class="control-label"></label>
+            <input asp-for="CellNo" placeholder="Phone Number" class="form-control card" />
+            <span asp-validation-for="CellNo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" placeholder="Email address" class="form-control card" />
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Qualification" class="control-label"></label>
+            <input asp-for="Qualification" placeholder="Qualification" class="form-control card" />
+            <span asp-validation-for="Qualification" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="tittleModel" class="control-label"></label>
+            <select asp-for="tittleModel" class="form-control" asp-items="Html.GetEnumSelectList<TittleModel>()">
+                <option value="">Select</option>
+            </select>
+            <span asp-validation-for="tittleModel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CentreModel" class="control-label"></label>
+            <select asp-for="CentreModel" class="form-control" asp-items="Html.GetEnumSelectList<CenterDel>()">
+                <option value="">Select</option>
+            </select>
+            <span asp-validation-for="CentreModel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-info" />
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

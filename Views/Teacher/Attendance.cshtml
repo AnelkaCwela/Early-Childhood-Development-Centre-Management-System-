@@ -1,0 +1,47 @@
+﻿@model AttendanceModel
+
+@{
+    ViewData["Title"] = "Atendance ";
+}
+
+<div class="card mb-3">
+    <div class="card-header text-center">
+        Pupuil Details
+    </div>
+    <div class="card-body">
+        <div class="text-center">
+            Pupil
+        </div>
+        <h5>
+            Pupil  Name     :@ViewBag.Name
+        </h5>
+        <h5>
+            Pupil Surname  :@ViewBag.LastName
+        </h5>>
+    </div>
+</div>
+
+<h4 class="card-header">Attendance Register</h4>
+<hr />
+<div class="card-body">
+    <form asp-action="Attendance" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="EnroleId" />
+        <input type="hidden" asp-for="PupilId" />
+        <div class="form-group">
+            <label asp-for="AttanceDate" class="control-label"></label>
+            <input asp-for="AttanceDate" class="form-control" />
+            <span asp-validation-for="AttanceDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="attend" class="control-label"></label>
+            <input asp-for="attend" class="form-check-input" />
+            <span asp-validation-for="attend" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-info" />
+        </div>
+    </form>
+</div>

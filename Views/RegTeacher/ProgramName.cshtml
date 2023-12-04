@@ -1,0 +1,54 @@
+﻿@model RegProgName
+
+@{
+    ViewData["Title"] = "Program Name";
+}
+
+
+
+<h4 class="card-header">Program Name</h4>
+<hr />
+<div class="card-body">
+    <form asp-action="Register" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Programname" class="control-label"></label>
+            <input asp-for="Programname" placeholder="Enter Program Name" class="form-control card" />
+            <span asp-validation-for="Programname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProgramDiscrption" class="control-label"></label>
+            <input asp-for="ProgramDiscrption" placeholder="Enter Program Description" class="form-control card" />
+            <span asp-validation-for="ProgramDiscrption" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProgramCost" class="control-label"></label>
+            <input asp-for="ProgramCost" placeholder="Cost" class="form-control card" />
+            <span asp-validation-for="ProgramCost" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="durationDe" class="control-label"></label>
+            <select asp-for="durationDe" class="form-control" asp-items="Html.GetEnumSelectList<durationDel>()">
+                <option value="">Select</option>
+            </select>
+            <span asp-validation-for="durationDe" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CentreModel" class="control-label"></label>
+            <select asp-for="CentreModel" class="form-control" asp-items="Html.GetEnumSelectList<CenterDel>()">
+                <option value="">Select</option>
+            </select>
+            <span asp-validation-for="CentreModel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-info" />
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

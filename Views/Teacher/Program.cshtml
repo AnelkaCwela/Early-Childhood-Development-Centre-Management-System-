@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProgrameOfferdModel>
+@{
+
+    ViewData["Title"] = "Program";
+}
+<div class="card">
+    View leaners By Program
+</div>
+<br />
+
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                   Program Name
+                </th>            
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <select asp-for="@item.CentreProgramId" disabled class="form-control" asp-items="ViewBag.CentreProgramId"></select>
+                </td>
+                <td>
+                    <a class="badge badge-dark" asp-action="AddMarks" asp-route-Id="@item.ProgrameOfferdId">Add/View Marks</a>
+                   
+                </td>
+                <td>                
+                    <a class="badge badge-info" asp-action="AddAttendance" asp-route-Id="@item.ProgrameOfferdId">Add/View Attendance</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+            else
+            {
+<div>
+    <p4>
+        You Dont Have Program Assign TO
+    </p4>
+</div>
+            }

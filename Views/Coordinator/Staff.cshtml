@@ -1,0 +1,64 @@
+﻿@model IEnumerable<UserModel>
+@{
+
+    ViewData["Title"] = "Centre Manger List";
+}
+<br />
+<div class="card">
+    <h5 class="text-center">
+        Centre Manger
+    </h5>
+</div>
+<br />
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CellNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fname)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CellNo)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a asp-controller="Liaison" asp-action="Profile" asp-route-Email="@item.Email">Details</a>
+                    </td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> <h6>No Centre Manager Yet</h6></div>
+
+}

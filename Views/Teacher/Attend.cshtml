@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AttendanceModel>
+
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<div class="card mb-3">
+    <div class="card-header text-center">
+        Atendance
+    </div>
+    <div class="card-body">
+        <div class="text-center">
+            Pupil
+        </div>
+        <h5>
+            Pupil  Name     :@ViewBag.Name
+        </h5>
+        <h5>
+            Pupil Surname  :@ViewBag.LastName
+        </h5>
+    </div>
+</div>
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    Date
+                </th>
+                <th>
+                    Attend
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.AttanceDate)
+
+                </td>
+                @if (item.attend == true)
+                {
+                    <td>
+                      Yes
+                    </td>
+                }
+                else
+                {
+                    <td>
+                       No
+                    </td>
+                }
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>
+        No Recod Yet
+    </div>
+}

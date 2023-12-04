@@ -1,0 +1,64 @@
+﻿@model IEnumerable<UserModel>
+@{
+
+    ViewData["Title"] = "Teachers";
+}
+<br />
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CellNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellNo)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                @if (User.IsInRole("CentreManager"))
+                {
+                    <td>
+                        <a asp-controller="Centre" asp-action="ProgramName" asp-route-Email="@item.Email">Assign to Program</a>
+                    </td>
+                }
+                <td>
+                    <a asp-controller="Centre" asp-action="ProgramNameList" asp-route-Email="@item.Email">Programs</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> <h6>No Teachers Yet</h6></div>
+
+}

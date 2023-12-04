@@ -1,0 +1,90 @@
+﻿@model IEnumerable<PupilStatuseView>
+@{
+
+    ViewData["Title"] = "Enrole";
+}
+
+<div class="card">
+    <p2>  Enrole</p2>
+</div>
+<p4>
+    <a class="badge badge-primary" asp-controller="Parent" asp-action="Apply">New Pupuil</a>
+</p4>
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.ApplicationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.IdentityNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pupilModel.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ganderModel.Gander)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.centreModel.CentreName)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                //var Id = item.pupilModel.PupilId;
+                //var Centre = item.pupilModel.CentreId;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pupilModel.ApplicationDate)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pupilModel.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pupilModel.IdentityNo)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pupilModel.Lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pupilModel.Fname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ganderModel.Gander)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.centreModel.CentreName)
+                    <td class="badge badge-primary">
+                        @Html.DisplayFor(modelItem => item.StatusModel.Statuse)
+                    </td>
+
+                    <td>
+                        <a class="badge badge-dark" asp-action="Enrol" asp-route-Id="@item.pupilModel.PupilId" asp-route-i="@item.pupilModel.CentreId">Enrole</a>
+                    </td>
+                    <td>
+                        <a class="badge badge-dark" asp-action="Enroles"asp-route-Id="@item.pupilModel.PupilId">Enroled Programes</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> <p5>Nothing  Yet</p5></div>
+
+}

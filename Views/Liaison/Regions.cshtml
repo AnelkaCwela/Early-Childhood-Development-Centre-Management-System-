@@ -1,0 +1,72 @@
+﻿@model IEnumerable<RegionsViewModel>
+@{
+
+    ViewData["Title"] = "Regions";
+}
+<br />
+
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.regionModel.RegionName)
+                </th>
+                <th>
+                    Province
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.suburbModel.AddressLine1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.suburbModel.AddressLine2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.suburbModel.CityName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.suburbModel.PostalCode)
+                </th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.regionModel.RegionName)
+                </td>
+
+                <td>
+                    <select asp-for="@item.regionModel.ProvinceId" disabled class="form-control" asp-items="ViewBag.ProvinceId"></select>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.suburbModel.AddressLine1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.suburbModel.AddressLine2)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.suburbModel.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.suburbModel.PostalCode)
+                </td>
+                <td>
+                    <a asp-controller="Liaison" asp-action="Centres" asp-route-Id="@item.suburbModel.SuburbId">Centres</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <div class="card-footer"> <p5>No Region yet to Dispaly</p5></div>
+
+}

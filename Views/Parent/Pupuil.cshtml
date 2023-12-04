@@ -1,0 +1,97 @@
+﻿@model ProfileViewModel
+@{
+
+    ViewData["Title"] = "Infom";
+}
+
+<div class="card mb-3">
+    <div class="card-header text-center">
+        Parent/ Gaudian
+    </div>
+    <div class="card-body">
+        <h5>
+            First Name   :@ViewBag.Name
+        </h5>
+        <h5>
+            Last Name    :@ViewBag.Surnme
+        </h5>
+        <h5>
+            Email        :@ViewBag.Cell
+        </h5>
+        <h5>
+            Phone Number :@ViewBag.Email
+        </h5>
+    </div>
+
+</div>
+
+<div class="card mb-3">
+    <div class="card-header text-center">
+        Address Infomation
+    </div>
+    <div class="card-body">
+        <h5>
+            Address Line 1        : <input asp-for="@Model.ParentModel.AddressLine1" disabled />
+        </h5>
+        <h5>
+            Address Line 1    : <input asp-for="@Model.ParentModel.AddressLine2" disabled />
+        </h5>
+        <h5>
+            City : <input asp-for="@Model.ParentModel.City" disabled />
+        </h5>
+        <h5>
+            Post Code : <input asp-for="@Model.ParentModel.PostalCode" disabled />
+        </h5>
+    </div>
+    <div class="card-footer">
+    </div>
+</div>
+<div class="card text-center">
+    Pupuil Infomation
+</div>
+@if (Model.pupilModels.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+                <th>
+                    DOB
+                </th>
+                <th>
+                    Identity Number
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    First Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.pupilModels)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdentityNo)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fname)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> <p5>Nothing  Yet to Display</p5></div>
+
+}

@@ -1,0 +1,46 @@
+﻿@model CoodinatorModel
+
+@{
+    ViewData["Title"] = "Register CentreManger";
+}
+
+
+
+<h4 class="card-header">Register Centre Manger</h4>
+<hr />
+<div class="card-body">
+    <form asp-action="Coordinator" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="UserName" />
+
+        <div class="form-group">
+            <label asp-for="tittleModel" class="control-label"></label>
+            <select asp-for="tittleModel" class="form-control" asp-items="Html.GetEnumSelectList<TittleModel>()">
+                <option value="">Select</option>
+            </select>
+            <span asp-validation-for="tittleModel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RegionId" class="control-label"></label>
+            <select asp-for="RegionId" class="form-control" asp-items="ViewBag.RegionId"></select>
+            <span asp-validation-for="Profile" class="text-danger">
+                @ViewBag.Region
+            </span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Profile" class="control-label"></label>
+            <div class="custom-file">
+
+                <input type="file" asp-for="Profile" class="form-control custom-file-input" />
+                <label asp-for="Profile" class="custom-file-label">Chose-Profile...</label>
+                <span asp-validation-for="Profile" class="text-danger">
+                    @ViewBag.B
+                </span>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-info" />
+        </div>
+    </form>
+</div>

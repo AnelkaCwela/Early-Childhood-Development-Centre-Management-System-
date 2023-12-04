@@ -1,0 +1,90 @@
+﻿@model IEnumerable<CoodinatorViewModel>
+@{
+
+    ViewData["Title"] = "In-Coodinator";
+}
+<div class="card text-center">
+ List of In-Active  Coodinator
+</div>
+<br />
+<div >
+    <a class="btn btn-sm btn-dark" asp-controller="Liaison" asp-action="Index">Active Coodinators</a>
+</div>
+<br />
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+                <th>
+                    Statuse
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CellNo)
+                </th>
+                <th>
+                    Region
+                </th>
+                <th>
+                    Profile
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+            <tr>
+                @if (item.Active == true)
+                {
+                    <td>
+                        Active
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        In-Active
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellNo)
+                </td>
+                <td>
+
+                    <select asp-for="@item.RegionId" disabled class="form-control" asp-items="ViewBag.RegionId"></select>
+
+                </td>
+                <td>
+                    <span class="img-responsive">
+                        <img class="img-rounded img-responsive" role="img" src="data:image/jpg;base64,@System.Convert.ToBase64String(item.Profile)" width="100" height="100" asp-append-version="true" />
+                    </span>
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-controller="Liaison" asp-action="Active" asp-route-ip="@item.RegionId" asp-route-id="@item.UserName">Activate</a>
+                    <span class="text-danger">@ViewBag.Error</span>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> No In Active Coodinator  Yet</div>
+
+}

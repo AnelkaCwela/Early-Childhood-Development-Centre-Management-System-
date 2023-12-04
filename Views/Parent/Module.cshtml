@@ -1,0 +1,86 @@
+﻿@model IEnumerable<EnrolesViewModel>
+@{
+
+    ViewData["Title"] = " Programe Enroled";
+}
+<div class="card mb-3">
+    <div class="card-header text-center">
+        Pupuil Details
+    </div>
+    <div class="card-body">
+
+        <h5>
+            Pupil  Name     :@ViewBag.Name
+        </h5>
+        <h5>
+            Pupil Surname  :@ViewBag.LastName
+        </h5>>
+    </div>
+</div>
+<div class="card">
+    <p2>Programe Enroled</p2>
+</div>
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.enroleModel.EnroleYear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProgrameOfferdModel.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProgrameOfferdModel.EndDate)
+                </th>
+                <th>
+                    Programe Name
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.enroleModel.EnroleYear)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgrameOfferdModel.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgrameOfferdModel.EndDate)
+                </td>
+
+                @foreach (var Data in ViewBag.CentrePro)
+                {
+
+                    if (item.ProgrameOfferdModel.CentreProgramId == Data.CentreProgramId)
+                    {
+                        <td>
+                            @Data.ProgramDescr
+                        </td>
+                        break;
+                    }
+                }
+                <td>
+                    <a class="badge badge-dark" asp-controller="Teacher" asp-action="Mark" asp-route-i="@item.enroleModel.EnroleId" asp-route-Id="@item.enroleModel.PupilId">Marks</a>
+                </td>
+                <td>
+                    <a class="badge badge-info" asp-controller="Teacher" asp-action="Attend" asp-route-i="@item.enroleModel.EnroleId" asp-route-Id="@item.enroleModel.PupilId">Attendance</a>
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card-footer"> <p5>No Programe  Yet</p5></div>
+
+}

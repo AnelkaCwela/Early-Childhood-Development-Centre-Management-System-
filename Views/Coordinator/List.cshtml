@@ -1,0 +1,38 @@
+﻿@model UserModel
+@{
+
+    ViewData["Title"] = "Centre Manger";
+}
+<br />
+<div class="card mb-3">
+    <div class="card">
+        <div class="text-center font-weight-bolder">
+            Centre
+        </div>
+        <p5> Centre   Name         :@ViewBag.CentreName</p5>
+        <p5>Centre   Email        :@ViewBag.Email</p5>
+        <p5>Centre   Cell Number  :@ViewBag.Cell</p5>
+        <div class="card-footer">
+            <a asp-action="Address" asp-controller="Liaison" asp-route-Id="@ViewBag.Id" class="badge badge-dark">Address</a>
+        </div>
+    </div>
+</div>
+<br />
+<div>
+    <div class="card-img-top">
+        <img class="img-rounded img-responsive border-primary" role="img" src="data:image/jpg;base64,@System.Convert.ToBase64String(@ViewBag.Image)" width="150" height="150" asp-append-version="true" />
+    </div>
+
+    <h5>
+        CenterManager Name :@Model.Fname
+    </h5>
+    <h5>
+        CenterSurname     :@Model.Lname
+    </h5>
+    <h5>
+        CenterManager Name :@Model.CellNo
+    </h5>
+    <h5>
+        CenterManager Name :@Model.Email
+    </h5>
+</div>

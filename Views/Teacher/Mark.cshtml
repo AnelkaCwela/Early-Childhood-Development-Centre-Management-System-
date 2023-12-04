@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MarksModel>
+
+@{
+    ViewData["Title"] = "Mark";
+}
+
+<div class="card mb-3">
+    <div class="card-header text-center">
+        Pupuil Details
+    </div>
+    <div class="card-body">
+        <div class="text-center">
+            Pupil
+        </div>
+        <h5>
+            Pupil  Name     :@ViewBag.Name
+        </h5>
+        <h5>
+            Pupil Surname  :@ViewBag.LastName
+        </h5>
+    </div>
+</div>
+@if (Model.Any())
+{
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+        <thead>
+            <tr>
+
+                <th>
+                    Mark
+                </th>
+                <th>
+                    Task
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.Mark)
+
+                </td>
+                <td>
+                    <select asp-for="@item.taskId" disabled class="form-control" asp-items="ViewBag.taskId"></select>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>
+        No Marks Yet
+    </div>
+}

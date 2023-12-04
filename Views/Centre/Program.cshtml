@@ -1,0 +1,33 @@
+﻿@model CentreProgramModel
+
+@{
+    ViewData["Title"] = "Program";
+}
+
+
+
+<h4 class="card-header text-center">
+    Programe
+    @ViewBag.A
+</h4>
+<hr />
+<div class="card-body">
+    <form asp-action="Program" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="ProgramDescr" class="control-label"></label>
+            <input asp-for="ProgramDescr" placeholder="Programe Name" class="form-control card" />
+            <span asp-validation-for="ProgramDescr" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="YearOferd" class="control-label"></label>
+            <input asp-for="YearOferd"  class="form-control" />
+            <span asp-validation-for="YearOferd" class="text-danger"></span>
+        </div>      
+        <div class="form-group">
+            <input type="submit" value="Next" class="btn btn-info" />
+        </div>
+    </form>
+</div>
+
